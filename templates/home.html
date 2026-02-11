@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>NGO Home</title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
 
-<h1>Welcome</h1>
+<nav class="navbar">
+<div class="logo">NGO</div>
+<ul>
+<li><a href="/home">Home</a></li>
+<li><a href="#">About Us</a></li>
+<li><a href="#">Our Projects</a></li>
+<li><a href="#">Media</a></li>
+<li><a href="/logout">Logout</a></li>
+</ul>
+</nav>
 
+<section class="hero">
 {% if banner %}
-<img src="{{ url_for('static', filename='uploads/' + banner['image']) }}" width="300">
-<h2>{{ banner['title'] }}</h2>
+<img src="/static/uploads/{{ banner['image'] }}">
+<div class="hero-text">
+<h1>{{ banner['title'] }}</h1>
 <p>{{ banner['description'] }}</p>
+</div>
 {% endif %}
+</section>
 
-{% if vm %}
+<section class="vm">
+<div>
 <h2>Our Vision</h2>
 <p>{{ vm['vision'] }}</p>
-
+</div>
+<div>
 <h2>Our Mission</h2>
 <p>{{ vm['mission'] }}</p>
-{% endif %}
-
-<h2>Statistics</h2>
-{% for stat in stats %}
-<p>{{ stat['label'] }} : {{ stat['value'] }}</p>
-{% endfor %}
-
-<h2>Initiatives</h2>
-{% for item in initiatives %}
-<p>{{ item['title'] }} - {{ item['description'] }}</p>
-{% endfor %}
-
-<a href="/logout">Logout</a>
+</div>
+</section>
 
 </body>
 </html>
+
