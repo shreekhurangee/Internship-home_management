@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+<h2>Admin Dashboard</h2>
+
+<h3>Add Banner</h3>
+<form method="POST" enctype="multipart/form-data">
+<input type="hidden" name="type" value="banner">
+<input type="file" name="image" required>
+<input type="text" name="title" placeholder="Banner Title" required>
+<input type="text" name="description" placeholder="Banner Description" required>
+<button>Add Banner</button>
+</form>
+
+<h3>Current Vision & Mission</h3>
+<form method="POST">
+<input type="hidden" name="type" value="vision">
+
+<input name="vision" value="{{ vm['vision'] }}" required>
+<input name="mission" value="{{ vm['mission'] }}" required>
+
+<button>Update Vision & Mission</button>
+</form>
+
+
+
+<a class="logout-btn" href="/admin/logout">Logout</a>
+
+</div>
+
+</body>
+</html>
