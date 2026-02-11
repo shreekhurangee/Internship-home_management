@@ -2,38 +2,47 @@
 <html>
 <head>
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="dashboard">
+<h1>Admin Dashboard</h1>
 
-<h2>Admin Dashboard</h2>
-
-<h3>Add Banner</h3>
+<h2>Add Banner</h2>
 <form method="POST" enctype="multipart/form-data">
-<input type="hidden" name="type" value="banner">
-<input type="file" name="image" required>
-<input type="text" name="title" placeholder="Banner Title" required>
-<input type="text" name="description" placeholder="Banner Description" required>
-<button>Add Banner</button>
+    <input type="hidden" name="type" value="banner">
+    <input type="file" name="image" required>
+    <input type="text" name="title" placeholder="Title" required>
+    <input type="text" name="description" placeholder="Description" required>
+    <button type="submit">Add</button>
 </form>
 
-<h3>Current Vision & Mission</h3>
+<h2>Edit Vision & Mission</h2>
 <form method="POST">
-<input type="hidden" name="type" value="vision">
-
-<input name="vision" value="{{ vm['vision'] }}" required>
-<input name="mission" value="{{ vm['mission'] }}" required>
-
-<button>Update Vision & Mission</button>
+    <input type="hidden" name="type" value="vision">
+    <textarea name="vision" required>{{ vm['vision'] }}</textarea>
+    <textarea name="mission" required>{{ vm['mission'] }}</textarea>
+    <button type="submit">Update</button>
 </form>
 
+<h2>Add Statistic</h2>
+<form method="POST">
+    <input type="hidden" name="type" value="stat">
+    <input type="text" name="label" placeholder="Label" required>
+    <input type="text" name="value" placeholder="Value" required>
+    <button type="submit">Add</button>
+</form>
 
+<h2>Add Initiative</h2>
+<form method="POST">
+    <input type="hidden" name="type" value="initiative">
+    <input type="text" name="title" placeholder="Title" required>
+    <input type="text" name="description" placeholder="Description" required>
+    <button type="submit">Add</button>
+</form>
 
-<a class="logout-btn" href="/admin/logout">Logout</a>
-
-</div>
+<a href="/admin/logout">Logout</a>
 
 </body>
 </html>
+
