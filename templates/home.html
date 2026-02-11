@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NGO Home</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+<div class="logo">NGO</div>
+<ul>
+<li><a href="/home">Home</a></li>
+<li><a href="#">About Us</a></li>
+<li><a href="#">Our Projects</a></li>
+<li><a href="#">Media</a></li>
+<li><a href="/logout">Logout</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+{% if banner %}
+<img src="/static/uploads/{{ banner['image'] }}">
+<div class="hero-text">
+<h1>{{ banner['title'] }}</h1>
+<p>{{ banner['description'] }}</p>
+</div>
+{% endif %}
+</section>
+
+<section class="vm">
+<div>
+<h2>Our Vision</h2>
+<p>{{ vm['vision'] }}</p>
+</div>
+<div>
+<h2>Our Mission</h2>
+<p>{{ vm['mission'] }}</p>
+</div>
+</section>
+
+</body>
+</html>
